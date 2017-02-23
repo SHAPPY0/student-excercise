@@ -1,0 +1,102 @@
+<div class="container">
+<div class="panel" ng-controller="createCtrl">
+  <h3><b>Add Students</b></h3>
+  <hr />
+  <form method="post"  ng-hide="editform">
+    <div class="row">
+      <div class="" style="color:green" ng-show="msg">{{alert}}</div>
+      <div class="col-lg-6 col-md-6">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" ng-model="add.name" />
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <label>Age</label>
+        <input type="text" class="form-control" name="age" ng-model="add.age" />
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-lg-3 col-md-3">
+        <label>House No.</label>
+        <input type="text" class="form-control" name="hn" ng-model="add.hn" />
+      </div>
+       <div class="col-lg-3 col-md-3">
+        <label>City</label>
+        <input type="text" class="form-control" name="city" ng-model="add.city" />
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <label>State</label>
+        <input type="text" class="form-control" name="state" ng-model="add.state" />
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <label>Country</label>
+        <input type="text" class="form-control" name="country" ng-model="add.country" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="text-center">
+      <button class="btn btn-success" ng-click="create()" >{{btnTxt}}</button>
+    </div>
+    </div> 
+  </form>
+  <br />
+  <!--====================Form to update student aDDRESS================-->
+   <form method="PUT"  ng-show="editform">
+    <div class="row">
+      <div class="" style="color:green" ng-show="msg">{{alert}}</div>
+      <div class="col-lg-6 col-md-6">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" ng-model="edit.name" ng-readonly="{{read}}" />
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <label>Age</label>
+        <input type="text" class="form-control" name="age" ng-model="edit.age" ng-readonly="{{read}}" />
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-lg-3 col-md-3">
+        <label>House No.</label>
+        <input type="text" class="form-control" name="hn" ng-model="edit.address[0].hn" />
+      </div>
+       <div class="col-lg-3 col-md-3">
+        <label>City</label>
+        <input type="text" class="form-control" name="city" ng-model="edit.address[0].city" />
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <label>State</label>
+        <input type="text" class="form-control" name="state" ng-model="edit.address[0].state" />
+      </div>
+      <div class="col-lg-3 col-md-3">
+        <label>Country</label>
+        <input type="text" class="form-control" name="country" ng-model="edit.address[0].country" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="text-center">
+      <button class="btn btn-success" ng-click="updateadd(edit._id)" >{{btnTxt}}</button>
+    </div>
+    </div> 
+  </form>
+  <div style="height:40px"></div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="list in slist">
+        <td>{{list.name}}</td>
+        <td>{{list.age}}</td>
+        <td>{{list.address[0].hn}},{{list.address[0].city}},{{list.address[0].state}},{{list.address[0].country}}</td>
+        <td><span><a href="javascript:void(0)" ng-click="editbtn(list._id)">Edit</a></span> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
